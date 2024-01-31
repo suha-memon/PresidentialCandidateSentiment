@@ -1,4 +1,4 @@
-# Homework 6
+# Presidential Candidate Support Analysis
 
 setwd("/Users/macbook/Documents/Suha/Projects/GitHub/PresidentialCandidateSentiment")
 
