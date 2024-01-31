@@ -1,24 +1,30 @@
-# Homework 6
+---
+title: "Presidential Candidate Support Analysis"
+author: "Suha Memon"
+date: "12/13/2021"
+output: word_document
+---
 
-setwd("/Users/suhamemon/Dropbox/DATA401/Week6/Homework")
-
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(tm)
 library(SnowballC)
 library(wordcloud)
 library(stringr)
+```
 
-pal <- brewer.pal(6,"Dark2")
+# Word Clouds
 
-##########################################################################
-# 1. Create a word cloud with the ANES 2016 open ended question about what 
-#    respondents LIKE about Donald Trump.
+## 1. Donald Trump Likes
 
+**Create a word cloud with the ANES 2016 open ended question about what respondents LIKE about Donald Trump.**
+
+```{r}
 trump_likes <- read.csv("redacted_trump_2016.csv")
 names(trump_likes)
 colnames(trump_likes) <- c("ID", "likes")
 
-trump_likes <- Corpus(VectorSource(trump_likes$likes)) # data comes from a vector, so use VectorSource
+trump_likes <- Corpus(VectorSource(trump_likes$likes))
 
 trump_likes <- tm_map(trump_likes, tolower)
 trump_likes <- tm_map(trump_likes, removeWords, stopwords('english'))
@@ -31,15 +37,17 @@ trump_likesMT <- sort(rowSums(trump_likesMT), decreasing = TRUE) # sort by row s
 
 trump_likesDF <- data.frame(word = names(trump_likesMT), freq = trump_likesMT) # transform into dataframe
 
-head(trump_likesDF)
-
+pal <- brewer.pal(6,"Dark2")
 wordcloud(trump_likesDF$word, freq= trump_likesDF$freq, max.words = 100, 
           random.order = FALSE, colors = pal)
+```
 
-##########################################################################
-# 2. Create a word cloud with the ANES 2016 open ended question about what 
-#    respondents DISLIKE about Donald Trump.
 
+## 2. Donald Trump Dislikes
+
+**Create a word cloud with the ANES 2016 open ended question about what respondents DISLIKE about Donald Trump.**
+
+```{r}
 trump_dislikes <- read.csv("redacted_trump_2016_dislikes.csv")
 colnames(trump_dislikes) <- c("ID", "dislikes")
 
@@ -56,15 +64,17 @@ trump_dislikesMT <- sort(rowSums(trump_dislikesMT), decreasing = TRUE) # sort by
 
 trump_dislikesDF <- data.frame(word = names(trump_dislikesMT), freq = trump_dislikesMT) # transform into dataframe
 
-head(trump_dislikesDF)
-
 wordcloud(trump_dislikesDF$word, freq= trump_dislikesDF$freq, max.words = 100, 
           random.order = FALSE, colors = pal)
+```
 
-##########################################################################
-# 3. Create a word cloud with the ANES 2016 open ended question about what 
-#    respondents LIKE about Hilary Clinton.
 
+
+## 3. Hilary Clinton Likes
+
+**Create a word cloud with the ANES 2016 open ended question about what respondents LIKE about Hilary Clinton.**
+
+```{r}
 clinton_likes <- read.csv("redacted_2016_clinton_likes.csv")
 colnames(clinton_likes) <- c("ID", "likes")
 
@@ -81,16 +91,16 @@ clinton_likesMT <- sort(rowSums(clinton_likesMT), decreasing = TRUE) # sort by r
 
 clinton_likesDF <- data.frame(word = names(clinton_likesMT), freq = clinton_likesMT) # transform into dataframe
 
-head(clinton_likesDF)
-
 wordcloud(clinton_likesDF$word, freq= clinton_likesDF$freq, max.words = 100, 
           random.order = FALSE, colors = pal)
+```
 
 
-##########################################################################
-# 4. Create a word cloud with the ANES 2016 open ended question about what 
-#    respondents DISLIKE about Hilary Clinton.
+## 4. Hilary Clinton Dislikes
 
+**Create a word cloud with the ANES 2016 open ended question about what respondents DISLIKE about Hilary Clinton.**
+
+```{r}
 clinton_dislikes <- read.csv("redacted_clinton_2016_dislikes.csv")
 names(clinton_dislikes)
 colnames(clinton_dislikes) <- c("ID", "dislikes")
@@ -108,7 +118,30 @@ clinton_dislikesMT <- sort(rowSums(clinton_dislikesMT), decreasing = TRUE) # sor
 
 clinton_dislikesDF <- data.frame(word = names(clinton_dislikesMT), freq = clinton_dislikesMT) # transform into dataframe
 
-head(clinton_dislikesDF)
-
 wordcloud(clinton_dislikesDF$word, freq= clinton_dislikesDF$freq, max.words = 100, 
           random.order = FALSE, colors = pal)
+```
+
+
+
+# Analysis Questions
+
+
+## Question 1
+
+**Compare the "like" word clouds for Trump and Obama (from lecture.) Are there similarities/differences? What conclusions do you draw?**
+
+The two word clouds have some similarities, but also some differences. The Obama word cloud emphasizes people and hope. Some of the words are "care," "honest", "Black", "good", "family", "class", different", "help", and "new". This word cloud shows that people like Obama because they are hopeful about the changes that he will bring.
+
+The Trump word cloud emphasizes the country and that he is a businessman. The cloud includes words from his slogan for the election: "make America great again". It also includes Hilary Clinton, which implies that people wanted to vote for him because he is not Clinton. Other words include "military", "money", "immigration", and "economy". 
+
+The points of emphasis are quite different for the two different clouds. Obama's word cloud shows that people are hopeful about change and inclusivity. Trump's cloud shows that they like his emphasis on the economy and business.
+
+
+## Question 2
+
+**Compare the word clouds for Donald Trump and Hilary Clinton. Comment on your findings.**
+
+The word clouds that show the reasons that people like Trump and Clinton both include the opposing candidate's name. This can show that people voted for that candidate because they did not want to vote for the opposing candidate. People said that they like Clinton because of her experience, because she is strong, smart, qualified, and cares about the issues that they do. People said that they like Trump because he is a good businessman and will improve the US economy. 
+
+The word clouds that show the reasons that people dislike Trump and Clinton have to do with their characteristics (mostly Trump) and experiences (mostly Clinton). The reasons that people dislike Trump include racism, sexism, his personality, ignorance, and qualifications (or lack thereof). This word cloud includes the words "temperament", "ego", "idiot", "attitude", and "unfit". The reasons that people dislike Clinton have to do with her experiences and include "emails", "scandals", and "history". The largest word on this word plot is "liar," followed by "trust." The words "woman" and "crooked" are also on this plot. This shows that many individuals said they would not vote for her because she is a woman. Additionally, this can be attributed to the fact that Trump constantly called her a "liar" and also "crooked Hilary". 
