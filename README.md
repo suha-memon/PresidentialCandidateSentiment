@@ -4,6 +4,9 @@ In this R project, I will be analyzing sentiment about the 2016 presidential ele
 
 To access the code for the following procedures, please reference presidential_candidate_analysis.R or presidential_candidate_analysis.Rmd to see the outputs.
 
+<a href="[http://github.com/user/project/blob/master/Readme.md#my-anchor](https://github.com/suha-memon/PresidentialCandidateSentiment/blob/06493755692a16a67cd6a2b665a2c8372c86e055/presidential_candidate_analysis.R#L1
+)">reference presidential_candidate_analysis.R</a>
+
 ## Respondents' LIKES about Donald Trump from ANES 2016 open ended questions
 ![image](https://github.com/suha-memon/PresidentialCandidateSentiment/assets/144626044/0434565c-baa1-4cad-830a-1f887dfccfe4)
 
