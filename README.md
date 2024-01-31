@@ -2,7 +2,11 @@
 
 In this R project, I will be analyzing sentiment about the 2016 presidential election candidates using R (primarily word bubbles).
 
-To access the code for the following procedures, please reference [presidential_candidate_analysis.R](http://github.com/user/project/blob/master/Readme.md#my-anchor](https://github.com/suha-memon/PresidentialCandidateSentiment/blob/ee3b4ec8ee84752c3b10a0196f3662ca3fdc3b4d/presidential_candidate_analysis.R#L1)) or  or presidential_candidate_analysis.Rmd to see the outputs. 
+To access the code for the following procedures, please reference [presidential_candidate_analysis.R](https://github.com/suha-memon/PresidentialCandidateSentiment/blob/0127e5cea626117570e4e43954bac1a6e98ad4b9/presidential_candidate_analysis.R#L1
+) or  or presidential_candidate_analysis.Rmd to see the outputs. 
+
+
+https://github.com/suha-memon/PresidentialCandidateSentiment/blob/0127e5cea626117570e4e43954bac1a6e98ad4b9/presidential_candidate_analysis.R#L1
 
 ## Respondents' LIKES about Donald Trump from ANES 2016 open ended questions
 ![image](https://github.com/suha-memon/PresidentialCandidateSentiment/assets/144626044/0434565c-baa1-4cad-830a-1f887dfccfe4)
